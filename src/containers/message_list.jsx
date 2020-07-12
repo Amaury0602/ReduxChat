@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 class MessageList extends Component {
   constructor(props) {
@@ -8,6 +10,22 @@ class MessageList extends Component {
   render() {
     return (<div>hello</div>);
   }
+
+  componentWillMount() {
+    this.props.getMessages();
+  }
 }
 
-export default MessageList;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    { getMessages: getMessages },
+    dispatch);
+}
+
+function mapStateToProps(state) {
+  return {
+    messages: state.messages
+  };
+}
+
+export default connect(mapDispatchToProps, mapStateToProps)(MessageList);
