@@ -12,12 +12,16 @@ class MessageList extends Component {
   }
 
   componentWillMount() {
-    this.props.getMessages();
+    this.props.getMessages(this.props.channel);
+  }
+
+  componentDidMount() {
+    setInterval(() => this.props.getMessages(this.props.channel), 500);
   }
 
   render() {
     return this.props.messages.map((message) => {
-      return <Message message={message} key={message.created_at} />;
+      return <Message message={message} key={message.created_at} ref={this.myRef} />;
     });
   }
 }
@@ -30,7 +34,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages
+    messages: state.messages,
+    channel: state.channel
   };
 }
 

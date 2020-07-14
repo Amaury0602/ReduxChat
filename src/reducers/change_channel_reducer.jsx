@@ -1,9 +1,9 @@
-export default function(state, action) {
+export default function(state = "general", action) {
   if (state === undefined) {
-    return [];
+    return null;
   }
   switch (action.type) {
-    case 'GET_MESSAGES':
+    case 'CHANGE_CHANNEL':
       return action.payload;
     default:
       return state;
