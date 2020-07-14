@@ -2,17 +2,23 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { getMessages } from '../actions';
+
+import Message from '../components/message';
+
 class MessageList extends Component {
   constructor(props) {
     super(props);
   }
 
-  render() {
-    return (<div>hello</div>);
-  }
-
   componentWillMount() {
     this.props.getMessages();
+  }
+
+  render() {
+    return this.props.messages.map((message) => {
+      return <Message message={message} key={message.created_at} />;
+    });
   }
 }
 
@@ -28,4 +34,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapDispatchToProps, mapStateToProps)(MessageList);
+export default connect(mapStateToProps, mapDispatchToProps)(MessageList);

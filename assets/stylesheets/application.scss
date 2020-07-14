@@ -15,8 +15,10 @@ body {
 }
 
 .message-list {
-  background-color: blue;
-  //flex-basis: 70%;
   width: 100%;
   height: 100%;
+
+  .message {
+    display: flex;
+  }
 }

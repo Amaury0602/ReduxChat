@@ -5,7 +5,7 @@ import ChannelList from '../containers/channel_list';
 
 const App = () => {
   return (
-    <div className="app container-fluid">
+    <div className="app container">
       <div className="channel-list">
         <ChannelList />
       </div>
