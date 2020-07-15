@@ -22,4 +22,11 @@ body {
     display: flex;
     font-size: 25px;
   }
+
+
+.channel {
+  .selected {
+    text-decoration: underline;
+  }
+}
 }
